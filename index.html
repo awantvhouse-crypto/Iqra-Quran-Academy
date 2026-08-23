@@ -627,6 +627,803 @@ input.value="";
 );
 
 </script>
+<!-- =========================
+     IQRA ACADEMY FEATURES
+========================= -->
 
+<section id="academy-system">
+
+  <h2>Student & Teacher Portal</h2>
+
+  <p class="subtitle">
+    Register your child and select a Quran teacher.
+  </p>
+
+  <!-- STUDENT REGISTRATION -->
+
+  <div class="card">
+
+    <h3>Create Student Profile</h3>
+
+    <form id="studentForm">
+
+      <label>
+        Student Name
+        <input id="studentName" type="text" required>
+      </label>
+
+      <label>
+        Father Name
+        <input id="fatherName" type="text" required>
+      </label>
+
+      <label>
+        Years Old
+        <input id="studentAge" type="number" required>
+      </label>
+
+      <label>
+        School Name
+        <input id="schoolName" type="text">
+      </label>
+
+      <label>
+        Address
+        <input id="studentAddress" type="text">
+      </label>
+
+      <label>
+        Phone Number
+        <input id="studentPhone" type="tel" required>
+      </label>
+
+      <label>
+        Course
+
+        <select id="studentCourse" required>
+
+          <option value="">
+            Select Course
+          </option>
+
+          <option>
+            Hifz - $100
+          </option>
+
+          <option>
+            Nazra - $50
+          </option>
+
+          <option>
+            Nazra - $80
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+        Teacher
+
+        <select id="studentTeacher" required>
+
+          <option value="">
+            Select Teacher
+          </option>
+
+          <option>
+            Abdullah Shahzad
+          </option>
+
+          <option>
+            Zain Ilyas
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <button
+        class="button full"
+        type="submit"
+      >
+        Create Student Profile
+      </button>
+
+    </form>
+
+
+    <div
+      id="studentCreated"
+      class="notice"
+    ></div>
+
+  </div>
+
+
+  <!-- TEACHER DASHBOARD -->
+
+  <div
+    class="card"
+    style="margin-top:30px;"
+  >
+
+    <h3>Teacher Dashboard</h3>
+
+    <p class="subtitle">
+      Select your teacher profile.
+    </p>
+
+
+    <select id="teacherDashboard">
+
+      <option value="">
+        Select Teacher
+      </option>
+
+      <option>
+        Abdullah Shahzad
+      </option>
+
+      <option>
+        Zain Ilyas
+      </option>
+
+    </select>
+
+
+    <div
+      id="teacherProfile"
+      style="display:none;margin-top:25px;"
+    >
+
+      <h3 id="teacherName"></h3>
+
+      <div
+        id="teacherInformation"
+        class="notice"
+        style="display:block;"
+      ></div>
+
+
+      <h3 style="margin-top:25px;">
+        My Students
+      </h3>
+
+
+      <div id="teacherStudents"></div>
+
+    </div>
+
+  </div>
+
+
+  <!-- SELECTED STUDENT -->
+
+  <div
+    id="selectedStudent"
+    class="card"
+    style="display:none;margin-top:30px;"
+  >
+
+    <h3>Student Profile</h3>
+
+    <div class="info">
+      <b>Name:</b>
+      <span id="viewStudentName"></span>
+    </div>
+
+    <div class="info">
+      <b>Father:</b>
+      <span id="viewFather"></span>
+    </div>
+
+    <div class="info">
+      <b>Age:</b>
+      <span id="viewAge"></span>
+    </div>
+
+    <div class="info">
+      <b>School:</b>
+      <span id="viewSchool"></span>
+    </div>
+
+    <div class="info">
+      <b>Address:</b>
+      <span id="viewAddress"></span>
+    </div>
+
+    <div class="info">
+      <b>Phone:</b>
+      <span id="viewPhone"></span>
+    </div>
+
+    <div class="info">
+      <b>Course:</b>
+      <span id="viewCourse"></span>
+    </div>
+
+    <div class="info">
+      <b>Teacher:</b>
+      <span id="viewTeacher"></span>
+    </div>
+
+
+    <br>
+
+
+    <button
+      class="button"
+      onclick="openStudentChat()"
+    >
+      💬 Open Chat
+    </button>
+
+
+    <a
+      id="callStudent"
+      class="button"
+      href="#"
+      style="margin-left:8px;"
+    >
+      📞 Call
+    </a>
+
+  </div>
+
+
+  <!-- CHAT -->
+
+  <div
+    id="academyChat"
+    class="card"
+    style="display:none;margin-top:30px;"
+  >
+
+    <h3 id="chatTitle">
+      Student Chat
+    </h3>
+
+
+    <div
+      id="chatMessages"
+      style="
+        background:#eef8f2;
+        min-height:250px;
+        padding:15px;
+        border-radius:12px;
+        margin:15px 0;
+      "
+    >
+
+      <div class="info">
+        Select a student to start chat.
+      </div>
+
+    </div>
+
+
+    <form id="chatForm">
+
+      <input
+        id="chatMessage"
+        type="text"
+        placeholder="Write your message..."
+        required
+      >
+
+      <br><br>
+
+      <button
+        class="button"
+        type="submit"
+      >
+        Send Message
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* =================================
+   LOCAL DEMO DATABASE
+================================= */
+
+let academyStudents =
+JSON.parse(
+  localStorage.getItem(
+    "iqraAcademyStudents"
+  )
+) || [];
+
+
+let currentStudent = null;
+
+
+/* =================================
+   TEACHER INFORMATION
+================================= */
+
+const teachers = {
+
+  "Abdullah Shahzad": {
+
+    name:
+      "Hafiz Abdullah Shahzad",
+
+    information:
+      "Father: Shahzad Ahmad | Age: 13 | School: Iqra Huffaz | Address: H Block, Multan Road",
+
+    phone:
+      "+9230543330064"
+
+  },
+
+
+  "Zain Ilyas": {
+
+    name:
+      "Hafiz Zain Ilyas",
+
+    information:
+      "Father: Ilyass | Age: 13 | School: Iqra Huffaz | Address: Mansura Bazaar, Lahore",
+
+    phone:
+      "+923440950974"
+
+  }
+
+};
+
+
+/* =================================
+   CREATE STUDENT
+================================= */
+
+document
+  .getElementById("studentForm")
+  .addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      const student = {
+
+        id:
+          Date.now(),
+
+        name:
+          document.getElementById(
+            "studentName"
+          ).value.trim(),
+
+        father:
+          document.getElementById(
+            "fatherName"
+          ).value.trim(),
+
+        age:
+          document.getElementById(
+            "studentAge"
+          ).value,
+
+        school:
+          document.getElementById(
+            "schoolName"
+          ).value.trim(),
+
+        address:
+          document.getElementById(
+            "studentAddress"
+          ).value.trim(),
+
+        phone:
+          document.getElementById(
+            "studentPhone"
+          ).value.trim(),
+
+        course:
+          document.getElementById(
+            "studentCourse"
+          ).value,
+
+        teacher:
+          document.getElementById(
+            "studentTeacher"
+          ).value
+
+      };
+
+
+      academyStudents.push(student);
+
+
+      localStorage.setItem(
+        "iqraAcademyStudents",
+        JSON.stringify(
+          academyStudents
+        )
+      );
+
+
+      const notice =
+        document.getElementById(
+          "studentCreated"
+        );
+
+
+      notice.style.display =
+        "block";
+
+
+      notice.innerText =
+        "Student profile created successfully. Teacher: "
+        +
+        student.teacher;
+
+
+      this.reset();
+
+    }
+  );
+
+
+/* =================================
+   TEACHER DASHBOARD
+================================= */
+
+document
+  .getElementById(
+    "teacherDashboard"
+  )
+  .addEventListener(
+    "change",
+    function(){
+
+      const teacher =
+        this.value;
+
+
+      const profile =
+        document.getElementById(
+          "teacherProfile"
+        );
+
+
+      const list =
+        document.getElementById(
+          "teacherStudents"
+        );
+
+
+      if(!teacher){
+
+        profile.style.display =
+          "none";
+
+        return;
+
+      }
+
+
+      profile.style.display =
+        "block";
+
+
+      document
+        .getElementById(
+          "teacherName"
+        )
+        .innerText =
+        teachers[teacher].name;
+
+
+      document
+        .getElementById(
+          "teacherInformation"
+        )
+        .innerText =
+        teachers[teacher].information;
+
+
+      list.innerHTML =
+        "";
+
+
+      const myStudents =
+        academyStudents.filter(
+          student =>
+            student.teacher === teacher
+        );
+
+
+      if(
+        myStudents.length === 0
+      ){
+
+        list.innerHTML =
+          '<div class="notice" style="display:block;">' +
+          'No students registered with this teacher yet.' +
+          '</div>';
+
+        return;
+
+      }
+
+
+      myStudents.forEach(
+        student => {
+
+          const box =
+            document.createElement(
+              "div"
+            );
+
+
+          box.className =
+            "student-card";
+
+
+          box.style.cssText =
+            "background:#f3faf5;padding:18px;margin-top:12px;border-radius:12px;";
+
+
+          box.innerHTML =
+
+            "<h3>" +
+            student.name +
+            "</h3>" +
+
+            "<p>Course: " +
+            student.course +
+            "</p>" +
+
+            "<p>Age: " +
+            student.age +
+            "</p>" +
+
+            '<br>' +
+
+            '<button class="button" onclick="viewStudent(' +
+            student.id +
+            ')">' +
+
+            'View Student' +
+
+            '</button>';
+
+
+          list.appendChild(
+            box
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =================================
+   VIEW STUDENT
+================================= */
+
+function viewStudent(id){
+
+  currentStudent =
+    academyStudents.find(
+      student =>
+        student.id === id
+    );
+
+
+  if(!currentStudent)
+    return;
+
+
+  document
+    .getElementById(
+      "selectedStudent"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "viewStudentName"
+    )
+    .innerText =
+    currentStudent.name;
+
+
+  document
+    .getElementById(
+      "viewFather"
+    )
+    .innerText =
+    currentStudent.father;
+
+
+  document
+    .getElementById(
+      "viewAge"
+    )
+    .innerText =
+    currentStudent.age;
+
+
+  document
+    .getElementById(
+      "viewSchool"
+    )
+    .innerText =
+    currentStudent.school;
+
+
+  document
+    .getElementById(
+      "viewAddress"
+    )
+    .innerText =
+    currentStudent.address;
+
+
+  document
+    .getElementById(
+      "viewPhone"
+    )
+    .innerText =
+    currentStudent.phone;
+
+
+  document
+    .getElementById(
+      "viewCourse"
+    )
+    .innerText =
+    currentStudent.course;
+
+
+  document
+    .getElementById(
+      "viewTeacher"
+    )
+    .innerText =
+    currentStudent.teacher;
+
+
+  document
+    .getElementById(
+      "callStudent"
+    )
+    .href =
+    "tel:" +
+    currentStudent.phone;
+
+
+  document
+    .getElementById(
+      "selectedStudent"
+    )
+    .scrollIntoView({
+      behavior:
+        "smooth"
+    });
+
+}
+
+
+/* =================================
+   OPEN CHAT
+================================= */
+
+function openStudentChat(){
+
+  if(!currentStudent)
+    return;
+
+
+  document
+    .getElementById(
+      "academyChat"
+    )
+    .style.display =
+    "block";
+
+
+  document
+    .getElementById(
+      "chatTitle"
+    )
+    .innerText =
+    "Chat with " +
+    currentStudent.name;
+
+
+  document
+    .getElementById(
+      "academyChat"
+    )
+    .scrollIntoView({
+      behavior:
+        "smooth"
+    });
+
+}
+
+
+/* =================================
+   SEND CHAT MESSAGE
+================================= */
+
+document
+  .getElementById(
+    "chatForm"
+  )
+  .addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      if(!currentStudent)
+        return;
+
+
+      const input =
+        document.getElementById(
+          "chatMessage"
+        );
+
+
+      const text =
+        input.value.trim();
+
+
+      if(!text)
+        return;
+
+
+      const message =
+        document.createElement(
+          "div"
+        );
+
+
+      message.className =
+        "info";
+
+
+      message.innerText =
+        text;
+
+
+      document
+        .getElementById(
+          "chatMessages"
+        )
+        .appendChild(
+          message
+        );
+
+
+      input.value =
+        "";
+
+    }
+  );
+
+</script>
 </body>
 </html>
