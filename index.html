@@ -1375,97 +1375,67 @@ Chat
 
 <section id="login">
 
-<h2>
-Login
-</h2>
+  <h2>Teacher Login</h2>
 
-<p class="subtitle">
-Teacher or student portal.
-</p>
+  <p class="subtitle">
+    Enter your teacher name and password.
+  </p>
 
+  <div class="card">
 
-<div class="card">
+    <form id="loginForm">
 
+      <label>
+        Teacher
 
-<form id="loginForm">
+        <select id="loginTeacher" required>
 
+          <option value="">
+            Select Teacher
+          </option>
 
-<label>
+          <option value="Abdullah Shahzad">
+            Abdullah Shahzad
+          </option>
 
-Login As
+          <option value="Zain Ilyas">
+            Zain Ilyas
+          </option>
 
-<select
-id="loginRole"
-required
->
+        </select>
 
-<option value="">
-Select
-</option>
-
-<option value="teacher">
-Teacher
-</option>
-
-<option value="student">
-Student
-</option>
-
-</select>
-
-</label>
+      </label>
 
 
+      <label>
+        Password
 
-<label>
+        <input
+          id="loginPassword"
+          type="password"
+          placeholder="Enter password"
+          required
+        >
 
-Name
-
-<input
-id="loginName"
-type="text"
-placeholder="Enter name"
-required
->
-
-</label>
+      </label>
 
 
+      <button
+        class="button full"
+        type="submit"
+      >
+        Login
+      </button>
 
-<label>
-
-Password
-
-<input
-id="loginPassword"
-type="password"
-placeholder="Enter password"
-required
->
-
-</label>
+    </form>
 
 
+    <div
+      id="loginMessage"
+      class="notice"
+    ></div>
 
-<button
-class="button full"
-type="submit"
->
-
-Login
-
-</button>
-
-</form>
-
-
-<div
-id="loginMessage"
-class="notice"
-></div>
-
-
-</div>
+  </div>
 
 </section>
 
@@ -2033,108 +2003,75 @@ function(event){
    LOGIN
 ================================= */
 
+/* =================================
+   SIMPLE TEACHER LOGIN
+================================= */
+
+const teacherPasswords = {
+
+  "Abdullah Shahzad": "qwerty12345",
+
+  "Zain Ilyas": "ssd42"
+
+};
+
+
 document
-.getElementById("loginForm")
-.addEventListener(
-"submit",
-function(event){
+  .getElementById("loginForm")
+  .addEventListener("submit", function(event) {
 
-  event.preventDefault();
+    event.preventDefault();
 
+    const teacher =
+      document.getElementById(
+        "loginTeacher"
+      ).value;
 
-  const role =
-    document
-    .getElementById(
-      "loginRole"
-    )
-    .value;
+    const password =
+      document.getElementById(
+        "loginPassword"
+      ).value;
 
-
-  const name =
-    document
-    .getElementById(
-      "loginName"
-    )
-    .value
-    .trim();
-
-
-  const notice =
-    document
-    .getElementById(
-      "loginMessage"
-    );
-
-
-  if(role === "teacher"){
-
-    if(
-      teachers[name]
-    ){
-
-      showTeacherDashboard(
-        name
-      );
-
-      notice.style.display =
-        "block";
-
-      notice.innerText =
-        "Teacher dashboard opened.";
-
-    }
-
-    else{
-
-      notice.style.display =
-        "block";
-
-      notice.innerText =
-        "Teacher not found. Use Abdullah Shahzad or Zain Ilyas.";
-
-    }
-
-  }
-
-
-  else if(role === "student"){
-
-    const student =
-      students.find(
-        s =>
-          s.name.toLowerCase()
-          ===
-          name.toLowerCase()
+    const message =
+      document.getElementById(
+        "loginMessage"
       );
 
 
-    if(student){
+    if (
+      teacherPasswords[teacher] &&
+      teacherPasswords[teacher] === password
+    ) {
 
-      showStudentProfile(
-        student
-      );
+      message.style.display = "block";
 
-      notice.style.display =
-        "block";
+      message.innerText =
+        "Login successful.";
 
-      notice.innerText =
-        "Student profile opened.";
+      showTeacherDashboard(teacher);
 
-    }
-
-    else{
-
-      notice.style.display =
-        "block";
-
-      notice.innerText =
-        "Student profile not found. Please register first.";
+      document
+        .getElementById("dashboard")
+        .scrollIntoView({
+          behavior: "smooth"
+        });
 
     }
 
-  }
+    else {
 
-});
+      message.style.display = "block";
+
+      message.innerText =
+        "Incorrect password. Profile cannot be opened.";
+
+      document
+        .getElementById("dashboard")
+        .style.display = "none";
+
+    }
+
+  });
 
 
 /* =================================
