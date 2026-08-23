@@ -1,1060 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Iqra Quran Academy</title>
-
-<style>
-
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-body{
-  font-family:Arial,sans-serif;
-  background:#f1f8f3;
-  color:#123d2b;
-  line-height:1.5;
-}
-
-header{
-  background:linear-gradient(135deg,#063d2b,#087b51);
-  color:white;
-  padding:20px;
-}
-
-.navbar{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo{
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  overflow:hidden;
-  background:#07543a;
-  border:2px solid white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.logo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.brand h1{
-  font-size:21px;
-}
-
-nav a{
-  color:white;
-  text-decoration:none;
-  margin-left:18px;
-  font-weight:bold;
-}
-
-.hero{
-  max-width:1100px;
-  margin:60px auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-  align-items:center;
-}
-
-.hero h2{
-  font-size:48px;
-  margin-bottom:20px;
-}
-
-.hero p{
-  margin-bottom:25px;
-}
-
-.button{
-  display:inline-block;
-  background:#f5d66f;
-  color:#173d2c;
-  padding:13px 20px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:bold;
-  border:none;
-  cursor:pointer;
-}
-
-.quran-scene{
-  height:330px;
-  border-radius:25px;
-  background:linear-gradient(
-    #5db9d6 0%,
-    #c4eddf 65%,
-    #24784f 66%
-  );
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-}
-
-.moon{
-  font-size:100px;
-  color:#fff0a8;
-}
-
-.quran{
-  font-size:65px;
-  margin-top:-20px;
-}
-
-section{
-  max-width:1050px;
-  margin:auto;
-  padding:70px 20px 10px;
-}
-
-section h2{
-  font-size:32px;
-  margin-bottom:10px;
-}
-
-.subtitle{
-  color:#688174;
-  margin-bottom:25px;
-}
-
-.card{
-  background:white;
-  border:1px solid #d7e8dc;
-  border-radius:18px;
-  padding:25px;
-  box-shadow:0 10px 30px rgba(0,0,0,.05);
-}
-
-form{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:17px;
-}
-
-label{
-  font-weight:bold;
-  font-size:14px;
-}
-
-input,
-select{
-  width:100%;
-  margin-top:7px;
-  padding:12px;
-  border:1px solid #c8ddd0;
-  border-radius:9px;
-  font-size:15px;
-}
-
-.full{
-  grid-column:1/-1;
-}
-
-.courses,
-.teachers,
-.payments{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.course,
-.teacher,
-.payment{
-  background:white;
-  border-radius:18px;
-  padding:25px;
-  border:1px solid #d7e8dc;
-  text-align:center;
-}
-
-.course-icon{
-  font-size:40px;
-}
-
-.price{
-  display:block;
-  font-size:25px;
-  font-weight:bold;
-  margin-top:15px;
-  color:#078052;
-}
-
-.teacher button{
-  margin-top:15px;
-}
-
-.chat{
-  background:white;
-  border-radius:18px;
-  overflow:hidden;
-  border:1px solid #d7e8dc;
-}
-
-.chat-header{
-  background:#087b51;
-  color:white;
-  padding:17px;
-  font-weight:bold;
-}
-
-.messages{
-  min-height:260px;
-  padding:20px;
-  background:#edf7f0;
-}
-
-.message{
-  background:white;
-  padding:11px 14px;
-  border-radius:12px;
-  margin-bottom:10px;
-  max-width:75%;
-}
-
-.my-message{
-  background:#087b51;
-  color:white;
-  margin-left:auto;
-}
-
-.chat-form{
-  display:flex;
-  padding:12px;
-  gap:10px;
-}
-
-.chat-form input{
-  margin:0;
-}
-
-.chat-form button{
-  border:none;
-  background:#087b51;
-  color:white;
-  padding:0 18px;
-  border-radius:9px;
-}
-
-.notice{
-  background:#ddf4e5;
-  padding:15px;
-  border-radius:10px;
-  margin-top:15px;
-  display:none;
-}
-
-.profile-box{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.info{
-  background:#f0f8f3;
-  padding:14px;
-  border-radius:10px;
-}
-
-.student-card{
-  background:#f7fbf8;
-  padding:18px;
-  margin-top:15px;
-  border-radius:12px;
-  border:1px solid #dcebe1;
-}
-
-.contact-buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:15px;
-}
-
-.contact-buttons a{
-  background:#087b51;
-  color:white;
-  padding:10px 14px;
-  border-radius:8px;
-  text-decoration:none;
-}
-
-footer{
-  margin-top:70px;
-  background:#063d2b;
-  color:white;
-  padding:30px;
-  text-align:center;
-}
-
-@media(max-width:750px){
-
-  nav{
-    display:none;
-  }
-
-  .hero{
-    grid-template-columns:1fr;
-    margin-top:35px;
-  }
-
-  .hero h2{
-    font-size:38px;
-  }
-
-  form{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .courses,
-  .teachers,
-  .payments{
-    grid-template-columns:1fr;
-  }
-
-  .profile-box{
-    grid-template-columns:1fr;
-  }
-
-  .logo{
-    width:55px;
-    height:55px;
-  }
-
-}
-
-</style>
-</head>
-
-
-<body>
-
-
-<header>
-
-<div class="navbar">
-
-<div class="brand">
-
-<div class="logo">
-<img src="g.png" alt="Iqra Quran Academy Logo">
-</div>
-
-<div>
-
-<h1>Iqra Quran Academy</h1>
-
-<small>
-Online Quran Learning
-</small>
-
-</div>
-
-</div>
-
-
-<nav>
-
-<a href="#start">Start</a>
-
-<a href="#courses">Courses</a>
-
-<a href="#teachers">Teachers</a>
-
-<a href="#login">Login</a>
-
-<a href="#chat">Chat</a>
-
-<a href="#fees">Fees</a>
-
-</nav>
-
-</div>
-
-
-
-<div class="hero">
-
-<div>
-
-<h2>
-Learn Quran
-<br>
-Online With Us
-</h2>
-
-<p>
-Welcome to Iqra Quran Academy.
-Start your Quran learning journey
-with qualified teachers from home.
-</p>
-
-<a
-href="#start"
-class="button"
->
-Start Registration
-</a>
-
-</div>
-
-
-<div class="quran-scene">
-
-<div class="moon">
-☾
-</div>
-
-<div class="quran">
-📖
-</div>
-
-<p>
-Quran • Knowledge • Guidance
-</p>
-
-</div>
-
-</div>
-
-</header>
-
-
-
-<!-- REGISTRATION -->
-
-<section id="start">
-
-<h2>
-Student Registration
-</h2>
-
-<p class="subtitle">
-Create a student profile.
-</p>
-
-
-<div class="card">
-
-<form id="registrationForm">
-
-
-<label>
-
-Student Name
-
-<input
-id="studentName"
-type="text"
-placeholder="Student name"
-required
->
-
-</label>
-
-
-
-<label>
-
-Father Name
-
-<input
-id="fatherName"
-type="text"
-placeholder="Father name"
-required
->
-
-</label>
-
-
-
-<label>
-
-School Name
-
-<input
-id="schoolName"
-type="text"
-placeholder="School name"
->
-
-</label>
-
-
-
-<label>
-
-Address
-
-<input
-id="studentAddress"
-type="text"
-placeholder="Address"
->
-
-</label>
-
-
-
-<label>
-
-Years Old
-
-<input
-id="age"
-type="number"
-placeholder="Age"
-required
->
-
-</label>
-
-
-
-<label>
-
-Phone Number
-
-<input
-id="phone"
-type="tel"
-placeholder="+92..."
-required
->
-
-</label>
-
-
-
-<label>
-
-Course
-
-<select id="course" required>
-
-<option value="">
-Select Course
-</option>
-
-<option>
-Hifz - $100
-</option>
-
-<option>
-Nazra - $50
-</option>
-
-<option>
-Nazra - $80
-</option>
+<option value="">Select Course</option>
+<option>Hifz - $100</option>
+<option>Nazra - $50</option>
+<option>Nazra - $80</option>
 
 </select>
 
 </label>
 
-
-
 <label>
-
 Teacher
 
 <select id="teacher" required>
 
-<option value="">
-Select Teacher
-</option>
-
-<option>
-Zain Ilyas
-</option>
-
-<option>
-Abdullah Shahzad
-</option>
+<option value="">Select Teacher</option>
+<option>Abdullah Shahzad</option>
+<option>Zain Ilyas</option>
 
 </select>
 
 </label>
 
-
-
-<button
-class="button full"
-type="submit"
->
-
+<button class="full" type="submit">
 Create Student Profile
-
 </button>
 
 </form>
 
-
-<div
-id="registrationMessage"
-class="notice"
->
-</div>
+<div id="registerMessage" class="notice"></div>
 
 </div>
 
 </section>
-
-
-
-<!-- COURSES -->
-
-<section id="courses">
-
-<h2>
-Courses & Fees
-</h2>
-
-<p class="subtitle">
-Choose a Quran course.
-</p>
-
-
-<div class="courses">
-
-
-<div class="course">
-
-<div class="course-icon">
-📗
-</div>
-
-<h3>
-Hifz
-</h3>
-
-<p>
-Quran memorisation program.
-</p>
-
-<span class="price">
-$100
-</span>
-
-</div>
-
-
-
-<div class="course">
-
-<div class="course-icon">
-📖
-</div>
-
-<h3>
-Nazra
-</h3>
-
-<p>
-Quran reading and fluency.
-</p>
-
-<span class="price">
-$50
-</span>
-
-</div>
-
-
-
-<div class="course">
-
-<div class="course-icon">
-✨
-</div>
-
-<h3>
-Nazra
-</h3>
-
-<p>
-Additional Nazra option.
-</p>
-
-<span class="price">
-$80
-</span>
-
-</div>
-
-
-</div>
-
-</section>
-
 
 
 <!-- TEACHERS -->
 
 <section id="teachers">
 
-<h2>
-Teachers
-</h2>
-
-<p class="subtitle">
-Our Quran teachers.
-</p>
-
+<h2>Teachers</h2>
 
 <div class="teachers">
 
-
 <div class="teacher">
 
-<h3>
-Zain Ilyas
-</h3>
+<h3>Hafiz Abdullah Shahzad</h3>
 
-<p>
-Quran Teacher
-</p>
-
-<div class="contact-buttons">
-
-<a href="tel:+923440950974">
-Contact Zain
-</a>
-
-<button
-class="button"
-onclick="openChat('Zain Ilyas')"
->
-Chat
-</button>
-
+<div class="info">
+Father: Shahzad Ahmad
 </div>
 
+<div class="info">
+Age: 13
 </div>
 
+<div class="info">
+School: Iqra Huffaz
+</div>
 
+<div class="info">
+Address: H Block, Multan Road
+</div>
 
-<div class="teacher">
-
-<h3>
-Abdullah Shahzad
-</h3>
-
-<p>
+<div class="info">
 Teacher / Chat
-</p>
+</div>
 
-<div class="contact-buttons">
-
-<a href="tel:+9230543330064">
+<a
+class="button"
+href="tel:+9230543330064"
+>
 Contact Abdullah
 </a>
 
-<button
+</div>
+
+
+<div class="teacher">
+
+<h3>Hafiz Zain Ilyas</h3>
+
+<div class="info">
+Father: Ilyass
+</div>
+
+<div class="info">
+Age: 13
+</div>
+
+<div class="info">
+School: Iqra Huffaz
+</div>
+
+<div class="info">
+Address: Mansura Bazaar, Lahore
+</div>
+
+<div class="info">
+Quran Teacher
+</div>
+
+<a
 class="button"
-onclick="openChat('Abdullah Shahzad')"
+href="tel:+923440950974"
 >
-Chat
-</button>
+Contact Zain
+</a>
 
 </div>
-
-</div>
-
 
 </div>
 
 </section>
 
 
+<!-- TEACHER DASHBOARD -->
 
-<!-- LOGIN -->
+<section id="dashboard">
 
-<section id="login">
-
-<h2>
-Login
-</h2>
-
-<p class="subtitle">
-Teacher or student login.
-</p>
-
+<h2>Teacher Dashboard</h2>
 
 <div class="card">
 
-<form id="loginForm">
-
-
 <label>
+Select Teacher
 
-Login As
-
-<select id="loginRole" required>
+<select id="dashboardTeacher">
 
 <option value="">
-Select
+Select Teacher
 </option>
 
-<option value="teacher">
-Teacher
+<option>
+Abdullah Shahzad
 </option>
 
-<option value="student">
-Student
+<option>
+Zain Ilyas
 </option>
 
 </select>
 
 </label>
 
+<br><br>
 
+<h3>Students</h3>
 
-<label>
-
-Name
-
-<input
-id="loginName"
-type="text"
-placeholder="Enter name"
-required
->
-
-</label>
-
-
-
-<label>
-
-Password
-
-<input
-id="loginPassword"
-type="password"
-placeholder="Enter password"
-required
->
-
-</label>
-
-
-
-<button
-class="button full"
-type="submit"
->
-
-Login
-
-</button>
-
-</form>
-
-
-<div
-id="loginMessage"
-class="notice"
->
-</div>
-
-</div>
-
-</section>
-
-
-
-<!-- PROFILE -->
-
-<section
-id="profile"
-style="display:none;"
->
-
-<h2>
-My Profile
-</h2>
-
-<p class="subtitle">
-Account information.
-</p>
-
-
-<div class="card">
-
-<h3 id="profileName">
-</h3>
-
-<br>
-
-
-<div class="profile-box">
-
-
-<div class="info">
-
-<strong>
-Father Name
-</strong>
-
-<p id="profileFather">
-</p>
-
-</div>
-
-
-<div class="info">
-
-<strong>
-Age
-</strong>
-
-<p id="profileAge">
-</p>
-
-</div>
-
-
-<div class="info">
-
-<strong>
-School
-</strong>
-
-<p id="profileSchool">
-</p>
-
-</div>
-
-
-<div class="info">
-
-<strong>
-Address
-</strong>
-
-<p id="profileAddress">
-</p>
-
-</div>
-
-
-<div class="info">
-
-<strong>
-Course
-</strong>
-
-<p id="profileCourse">
-</p>
-
-</div>
-
-
-<div class="info">
-
-<strong>
-Teacher
-</strong>
-
-<p id="profileTeacher">
-</p>
-
-</div>
-
-
-</div>
-
-
-<br>
-
-
-<a
-href="#chat"
-class="button"
->
-Open Chat
-</a>
-
-</div>
-
-</section>
-
-
-
-<!-- TEACHER DASHBOARD -->
-
-<section
-id="teacherDashboard"
-style="display:none;"
->
-
-<h2>
-Teacher Dashboard
-</h2>
-
-<p class="subtitle">
-Students assigned to you.
-</p>
-
-
-<div class="card">
-
-<h3 id="teacherDashboardName">
-Teacher
-</h3>
-
-
-<div id="studentList">
-
-<div class="student-card">
-
-<h3>
-Student List
-</h3>
+<div id="studentList" class="students">
 
 <p>
-Students will appear here after
-the secure database is connected.
+Select a teacher to view students.
 </p>
-
-<div class="contact-buttons">
-
-<a href="#chat">
-Open Chat
-</a>
-
-</div>
-
-</div>
 
 </div>
 
@@ -1062,58 +158,89 @@ Open Chat
 
 </section>
 
+
+<!-- STUDENT PROFILE -->
+
+<section id="studentProfile" style="display:none;">
+
+<h2>Student Profile</h2>
+
+<div class="card">
+
+<h3 id="selectedStudentName"></h3>
+
+<div class="info">
+Father: <span id="selectedFather"></span>
+</div>
+
+<div class="info">
+Age: <span id="selectedAge"></span>
+</div>
+
+<div class="info">
+School: <span id="selectedSchool"></span>
+</div>
+
+<div class="info">
+Address: <span id="selectedAddress"></span>
+</div>
+
+<div class="info">
+Phone: <span id="selectedPhone"></span>
+</div>
+
+<div class="info">
+Course: <span id="selectedCourse"></span>
+</div>
+
+<div class="info">
+Teacher: <span id="selectedTeacher"></span>
+</div>
+
+<br>
+
+<button
+onclick="openStudentChat()"
+>
+💬 Open Chat
+</button>
+
+</div>
+
+</section>
 
 
 <!-- CHAT -->
 
 <section id="chat">
 
-<h2>
-Chat
-</h2>
+<h2>Chat</h2>
 
-<p class="subtitle">
-Teacher / student chat interface.
-</p>
+<div class="chat-box">
 
-
-<div class="chat">
-
-<div class="chat-header">
-
-<span id="chatTeacher">
-Select Teacher
-</span>
-
+<div class="chat-head" id="chatTitle">
+Student / Teacher Chat
 </div>
 
+<div class="messages" id="messages">
 
-<div
-class="messages"
-id="messages"
->
-
-<div class="message">
-
-Assalam-o-Alaikum!
-Please select a teacher.
-
+<div class="msg">
+Select a student and press Open Chat.
 </div>
 
 </div>
-
 
 <form
 class="chat-form"
-onsubmit="sendMessage(event)"
+id="chatForm"
 >
 
 <input
-id="chatText"
-placeholder="Write your message..."
+id="chatInput"
+placeholder="Write message..."
 >
 
-<button type="submit">
+<button>
 Send
 </button>
 
@@ -1124,162 +251,57 @@ Send
 </section>
 
 
-
-<!-- FEES -->
-
-<section id="fees">
-
-<h2>
-Payment Methods
-</h2>
-
-<p class="subtitle">
-Academy fee payment.
-</p>
-
-
-<div class="payments">
-
-
-<div class="payment">
-
-<h3>
-EasyPaisa
-</h3>
-
-<p>
-Pay academy fees through
-EasyPaisa.
-</p>
-
-<br>
-
-<button
-class="button"
-onclick="paymentMessage()"
->
-Payment Reference
-</button>
-
-</div>
-
-
-
-<div class="payment">
-
-<h3>
-UBL
-</h3>
-
-<p>
-Pay academy fees through UBL.
-</p>
-
-<br>
-
-<button
-class="button"
-onclick="paymentMessage()"
->
-Payment Reference
-</button>
-
-</div>
-
-
-
-<div class="payment">
-
-<h3>
-Bank Transfer
-</h3>
-
-<p>
-Bank transfer payment.
-</p>
-
-<br>
-
-<button
-class="button"
-onclick="paymentMessage()"
->
-Payment Reference
-</button>
-
-</div>
-
-
-</div>
-
-
-<div
-id="paymentNotice"
-class="notice"
->
-</div>
-
-</section>
-
-
-
 <footer>
 
-<h3>
-Iqra Quran Academy
-</h3>
-
 <p>
-Quran Learning • Hifz • Nazra • Online Classes
+Iqra Quran Academy
 </p>
 
-<br>
-
 <p>
-© 2026 Iqra Quran Academy
+Quran Learning • Hifz • Nazra
 </p>
 
 </footer>
 
 
-
 <script>
 
+/* STUDENT DATABASE - LOCAL DEMO */
 
-let selectedTeacher = "";
+let students =
+JSON.parse(
+localStorage.getItem("iqraStudents")
+) || [];
 
-let students = [];
 
-
-
-/* REGISTRATION */
-
+/* REGISTER STUDENT */
 
 document
-.getElementById("registrationForm")
+.getElementById("studentForm")
 .addEventListener(
 "submit",
-function(event){
+function(e){
 
-event.preventDefault();
-
+e.preventDefault();
 
 const student = {
 
+id:Date.now(),
+
 name:
-document.getElementById("studentName").value,
+document.getElementById("name").value,
 
 father:
-document.getElementById("fatherName").value,
-
-school:
-document.getElementById("schoolName").value,
-
-address:
-document.getElementById("studentAddress").value,
+document.getElementById("father").value,
 
 age:
 document.getElementById("age").value,
+
+school:
+document.getElementById("school").value,
+
+address:
+document.getElementById("address").value,
 
 phone:
 document.getElementById("phone").value,
@@ -1295,218 +317,62 @@ document.getElementById("teacher").value
 
 students.push(student);
 
+localStorage.setItem(
+"iqraStudents",
+JSON.stringify(students)
+);
 
-const notice =
+
+const msg =
 document.getElementById(
-"registrationMessage"
+"registerMessage"
 );
 
+msg.style.display="block";
 
-notice.style.display = "block";
+msg.innerText =
+"Profile created successfully. Teacher: "
++
+student.teacher;
 
-
-notice.innerText =
-"Student profile created for "
-+
-student.name
-+
-". Teacher: "
-+
-student.teacher
-+
-".";
-
+this.reset();
 
 }
 );
 
 
-
-/* CHAT */
-
-
-function openChat(teacher){
-
-selectedTeacher =
-teacher;
-
+/* TEACHER STUDENT LIST */
 
 document
-.getElementById("chatTeacher")
-.innerText =
-teacher;
-
-
-document
-.getElementById("messages")
-.innerHTML =
-
-'<div class="message">' +
-
-'Chat with ' +
-teacher +
-' is ready.' +
-
-'</div>';
-
-
-document
-.getElementById("chat")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-
-function sendMessage(event){
-
-event.preventDefault();
-
-
-if(!selectedTeacher){
-
-alert(
-"Please select a teacher first."
-);
-
-return;
-
-}
-
-
-const input =
-document.getElementById(
-"chatText"
-);
-
-
-const text =
-input.value.trim();
-
-
-if(!text) return;
-
-
-const message =
-document.createElement(
-"div"
-);
-
-
-message.className =
-"message my-message";
-
-
-message.innerText =
-text;
-
-
-document
-.getElementById("messages")
-.appendChild(
-message
-);
-
-
-input.value = "";
-
-}
-
-
-
-/* LOGIN */
-
-
-document
-.getElementById("loginForm")
+.getElementById("dashboardTeacher")
 .addEventListener(
-"submit",
-function(event){
+"change",
+function(){
 
-event.preventDefault();
-
-
-const role =
-document.getElementById(
-"loginRole"
-).value;
-
-
-const name =
-document.getElementById(
-"loginName"
-).value.trim();
-
-
-const message =
-document.getElementById(
-"loginMessage"
-);
-
-
-if(role === "teacher"){
-
-showTeacherDashboard(name);
-
-}
-
-else if(role === "student"){
-
-showStudentProfile(name);
-
-}
-
-else{
-
-message.style.display =
-"block";
-
-message.innerText =
-"Please select a login type.";
-
-}
-
-}
-);
-
-
-
-/* TEACHER DASHBOARD */
-
-
-function showTeacherDashboard(name){
-
-document
-.getElementById(
-"teacherDashboard"
-)
-.style.display =
-"block";
-
-
-document
-.getElementById(
-"teacherDashboardName"
-)
-.innerText =
-name;
-
+const teacher=this.value;
 
 const list =
 document.getElementById(
 "studentList"
 );
 
+list.innerHTML="";
 
-list.innerHTML = "";
+
+if(!teacher){
+
+list.innerHTML=
+"<p>Select a teacher.</p>";
+
+return;
+
+}
 
 
 const teacherStudents =
 students.filter(
 student =>
-student.teacher === name
+student.teacher === teacher
 );
 
 
@@ -1515,14 +381,7 @@ teacherStudents.length === 0
 ){
 
 list.innerHTML =
-
-'<div class="student-card">' +
-
-'<h3>No students yet</h3>' +
-
-'<p>Students registered with this teacher will appear here.</p>' +
-
-'</div>';
+"<p>No students registered with this teacher yet.</p>";
 
 return;
 
@@ -1537,51 +396,152 @@ document.createElement(
 "div"
 );
 
-box.className =
-"student-card";
+box.className="student";
 
 
-box.innerHTML =
+box.innerHTML=
 
-"<h3>" +
-student.name +
-"</h3>" +
+"<h3>"
++
+student.name
++
+"</h3>"
 
-"<p>Father: " +
-student.father +
-"</p>" +
++
 
-"<p>Age: " +
-student.age +
-"</p>" +
+"<p>Course: "
++
+student.course
++
+"</p>"
 
-"<p>Course: " +
-student.course +
-"</p>" +
++
 
-"<p>Phone: " +
-student.phone +
-"</p>" +
+"<p>Age: "
++
+student.age
++
+"</p>"
 
-'<div class="contact-buttons">' +
++
 
-'<a href="tel:' +
-student.phone +
-'">Call Student</a>' +
+"<br>"
 
-'<a href="#chat">Open Chat</a>' +
++
 
-'</div>';
+"<button onclick=\"viewStudent("
++
+student.id
++
+")\">"
+
++
+"View Student"
+
++
+"</button>";
 
 
 list.appendChild(box);
 
 });
 
+}
+);
+
+
+/* VIEW STUDENT */
+
+let currentStudent=null;
+
+
+function viewStudent(id){
+
+currentStudent =
+students.find(
+student =>
+student.id === id
+);
+
+
+if(!currentStudent)
+return;
+
 
 document
 .getElementById(
-"teacherDashboard"
+"studentProfile"
+)
+.style.display="block";
+
+
+document
+.getElementById(
+"selectedStudentName"
+)
+.innerText =
+currentStudent.name;
+
+
+document
+.getElementById(
+"selectedFather"
+)
+.innerText =
+currentStudent.father;
+
+
+document
+.getElementById(
+"selectedAge"
+)
+.innerText =
+currentStudent.age;
+
+
+document
+.getElementById(
+"selectedSchool"
+)
+.innerText =
+currentStudent.school;
+
+
+document
+.getElementById(
+"selectedAddress"
+)
+.innerText =
+currentStudent.address;
+
+
+document
+.getElementById(
+"selectedPhone"
+)
+.innerText =
+currentStudent.phone;
+
+
+document
+.getElementById(
+"selectedCourse"
+)
+.innerText =
+currentStudent.course;
+
+
+document
+.getElementById(
+"selectedTeacher"
+)
+.innerText =
+currentStudent.teacher;
+
+
+document
+.getElementById(
+"studentProfile"
 )
 .scrollIntoView({
 behavior:"smooth"
@@ -1590,137 +550,83 @@ behavior:"smooth"
 }
 
 
+/* OPEN CHAT */
 
-/* STUDENT PROFILE */
+function openStudentChat(){
+
+if(!currentStudent)
+return;
 
 
-function showStudentProfile(name){
+document
+.getElementById(
+"chatTitle"
+)
+.innerText =
+"Chat with "
++
+currentStudent.name;
 
-const student =
-students.find(
-s => s.name.toLowerCase()
-=== name.toLowerCase()
+
+document
+.getElementById(
+"chat"
+)
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* SEND CHAT MESSAGE */
+
+document
+.getElementById("chatForm")
+.addEventListener(
+"submit",
+function(e){
+
+e.preventDefault();
+
+
+const input =
+document.getElementById(
+"chatInput"
 );
+
+const text =
+input.value.trim();
+
+
+if(!text)
+return;
 
 
 const message =
-document.getElementById(
-"loginMessage"
+document.createElement(
+"div"
 );
 
+message.className=
+"msg my-msg";
 
-if(!student){
+message.innerText=text;
 
-message.style.display =
-"block";
 
-message.innerText =
-"Student profile not found. Register the student first.";
+document
+.getElementById(
+"messages"
+)
+.appendChild(message);
 
-return;
+
+input.value="";
 
 }
-
-
-document
-.getElementById(
-"profile"
-)
-.style.display =
-"block";
-
-
-document
-.getElementById(
-"profileName"
-)
-.innerText =
-student.name;
-
-
-document
-.getElementById(
-"profileFather"
-)
-.innerText =
-student.father;
-
-
-document
-.getElementById(
-"profileAge"
-)
-.innerText =
-student.age;
-
-
-document
-.getElementById(
-"profileSchool"
-)
-.innerText =
-student.school;
-
-
-document
-.getElementById(
-"profileAddress"
-)
-.innerText =
-student.address;
-
-
-document
-.getElementById(
-"profileCourse"
-)
-.innerText =
-student.course;
-
-
-document
-.getElementById(
-"profileTeacher"
-)
-.innerText =
-student.teacher;
-
-
-document
-.getElementById(
-"profile"
-)
-.scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-
-
-/* PAYMENT */
-
-
-function paymentMessage(){
-
-const notice =
-document.getElementById(
-"paymentNotice"
 );
-
-
-notice.style.display =
-"block";
-
-
-notice.innerText =
-"Payment reference section is ready. Real payment verification will be connected securely later.";
-
-}
-
 
 </script>
-
 
 </body>
 </html>
