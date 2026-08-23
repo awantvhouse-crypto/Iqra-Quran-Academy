@@ -1145,7 +1145,13 @@ type="submit"
 >
 
 Create Student Profile
-
+<button
+  type="button"
+  class="green-button"
+  onclick="sendStudentToTeacher()"
+>
+  📱 Send Profile to Teacher
+</button>
 </button>
 
 </form>
@@ -2530,7 +2536,95 @@ function showPaymentMessage(){
     "Please contact the academy for current payment details.";
 
 }
+function sendStudentToTeacher() {
 
+  const name =
+    document.getElementById("studentName").value.trim();
+
+  const father =
+    document.getElementById("fatherName").value.trim();
+
+  const age =
+    document.getElementById("studentAge").value;
+
+  const school =
+    document.getElementById("schoolName").value.trim();
+
+  const address =
+    document.getElementById("studentAddress").value.trim();
+
+  const phone =
+    document.getElementById("studentPhone").value.trim();
+
+  const course =
+    document.getElementById("studentCourse").value;
+
+  const teacher =
+    document.getElementById("studentTeacher").value;
+
+
+  if (
+    !name ||
+    !father ||
+    !age ||
+    !phone ||
+    !course ||
+    !teacher
+  ) {
+
+    alert(
+      "Please complete the required student information first."
+    );
+
+    return;
+  }
+
+
+  const teacherNumbers = {
+
+    "Abdullah Shahzad":
+      "9230543330064",
+
+    "Zain Ilyas":
+      "923440950974"
+
+  };
+
+
+  const teacherNumber =
+    teacherNumbers[teacher];
+
+
+  const message =
+`Assalam-o-Alaikum,
+
+New Student Registration
+
+Student Name: ${name}
+Father Name: ${father}
+Age: ${age}
+School: ${school}
+Address: ${address}
+Phone: ${phone}
+Course: ${course}
+Teacher: ${teacher}
+
+Iqra Quran Academy`;
+
+
+  const whatsappURL =
+    "https://wa.me/" +
+    teacherNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
+
+}
 </script>
 
 
