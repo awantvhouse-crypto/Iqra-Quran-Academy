@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Iqra Quran Academy</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f8f3;
+      color: #123d2b;
+    }
+
+    header {
+      background: linear-gradient(135deg, #063d2b, #087b51);
+      color: white;
+      padding: 20px;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #07543a;
+      border: 2px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+    .brand h1 {
+      font-size: 21px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: bold;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 60px auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #f5d66f;
+      color: #173d2c;
+      padding: 13px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .quran-scene {
+      height: 330px;
+      border-radius: 25px;
+      background: linear-gradient(#5db9d6 0%, #c4eddf 65%, #24784f 66%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,.2);
+    }
+
+    .moon {
+      font-size: 100px;
+      color: #fff0a8;
+    }
+
+    .quran {
+      font-size: 65px;
+      margin-top: -20px;
+    }
+
+    section {
+      max-width: 1050px;
+      margin: auto;
+      padding: 70px 20px 10px;
+    }
+
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #688174;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #d7e8dc;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 17px;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      margin-top: 7px;
+      padding: 12px;
+      border: 1px solid #c8ddd0;
+      border-radius: 9px;
+      font-size: 15px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    .courses,
+    .teachers,
+    .payments {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .course,
+    .teacher,
+    .payment {
+      background: white;
+      border-radius: 18px;
+      padding: 25px;
+      border: 1px solid #d7e8dc;
+      text-align: center;
+    }
+
+    .course-icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .course h3,
+    .teacher h3,
+    .payment h3 {
+      margin-bottom: 10px;
+    }
+
+    .price {
+      display: block;
+      font-size: 25px;
+      font-weight: bold;
+      margin-top: 15px;
+      color: #078052;
+    }
+
+    .teacher button {
+      margin-top: 15px;
+      border: none;
+      background: #087b51;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .chat {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #d7e8dc;
+    }
+
+    .chat-header {
+      background: #087b51;
+      color: white;
+      padding: 17px;
+      font-weight: bold;
+    }
+
+    .messages {
+      min-height: 260px;
+      padding: 20px;
+      background: #edf7f0;
+    }
+
+    .message {
+      background: white;
+      padding: 11px 14px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      max-width: 75%;
+    }
+
+    .my-message {
+      background: #087b51;
+      color: white;
+      margin-left: auto;
+    }
+
+    .chat-form {
+      display: flex;
+      padding: 12px;
+      gap: 10px;
+    }
+
+    .chat-form input {
+      margin: 0;
+    }
+
+    .chat-form button {
+      border: none;
+      background: #087b51;
+      color: white;
+      padding: 0 18px;
+      border-radius: 9px;
+      cursor: pointer;
+    }
+
+    .notice {
+      background: #ddf4e5;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      display: none;
+    }
+
+    footer {
+      margin-top: 70px;
+      background: #063d2b;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    @media (max-width: 750px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        margin-top: 35px;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      .courses,
+      .teachers,
+      .payments {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="navbar">
+
+    <div class="brand">
+
+      <div class="logo">
+        ☾📖
+      </div>
+
+      <div>
+        <h1>Iqra Quran Academy</h1>
+        <small>Online Quran Learning</small>
+      </div>
+
+    </div>
+
+    <nav>
+      <a href="#start">Start</a>
+      <a href="#courses">Courses</a>
+      <a href="#teachers">Teachers</a>
+      <a href="#chat">Chat</a>
+      <a href="#fees">Fees</a>
+    </nav>
+
+  </div>
+
+
+  <div class="hero">
+
+    <div>
+
+      <h2>
+        Learn Quran<br>
+        Online With Us
+      </h2>
+
+      <p>
+        Welcome to Iqra Quran Academy.
+        Start your Quran learning journey with qualified teachers
+        from the comfort of your home.
+      </p>
+
+      <a href="#start" class="button">
+        Start Registration
+      </a>
+
+    </div>
+
+
+    <div class="quran-scene">
+
+      <div class="moon">☾</div>
+
+      <div class="quran">
+        📖
+      </div>
+
+      <p>
+        Quran • Knowledge • Guidance
+      </p>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- REGISTRATION -->
+
+<section id="start">
+
+  <h2>Start Here</h2>
+
+  <p class="subtitle">
+    Register the student to begin Quran classes.
+  </p>
+
+
+  <div class="card">
+
+    <form id="registrationForm">
+
+      <label>
+        Student Name
+
+        <input
+          type="text"
+          id="studentName"
+          placeholder="Student name"
+          required
+        >
+      </label>
+
+
+      <label>
+        Father Name
+
+        <input
+          type="text"
+          id="fatherName"
+          placeholder="Father name"
+          required
+        >
+      </label>
+
+
+      <label>
+        Years Old
+
+        <input
+          type="number"
+          id="age"
+          placeholder="Age"
+          required
+        >
+      </label>
+
+
+      <label>
+        Phone Number
+
+        <input
+          type="tel"
+          id="phone"
+          placeholder="+92..."
+          required
+        >
+      </label>
+
+
+      <label>
+        Course
+
+        <select id="course" required>
+
+          <option value="">
+            Select Course
+          </option>
+
+          <option>
+            Hifz - $100
+          </option>
+
+          <option>
+            Nazra - $50
+          </option>
+
+          <option>
+            Nazra - $80
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+        Teacher
+
+        <select id="teacher" required>
+
+          <option value="">
+            Select Teacher
+          </option>
+
+          <option>
+            Zain Ilyas
+          </option>
+
+          <option>
+            Abdullah Shahzad
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <button class="button full" type="submit">
+        Create Student Profile
+      </button>
+
+    </form>
+
+
+    <div id="registrationMessage" class="notice"></div>
+
+  </div>
+
+</section>
+
+
+
+<!-- COURSES -->
+
+<section id="courses">
+
+  <h2>Courses & Fees</h2>
+
+  <p class="subtitle">
+    Choose the Quran course that is suitable for the student.
+  </p>
+
+
+  <div class="courses">
+
+
+    <div class="course">
+
+      <div class="course-icon">
+        📗
+      </div>
+
+      <h3>Hifz</h3>
+
+      <p>
+        Quran memorisation program.
+      </p>
+
+      <span class="price">
+        $100
+      </span>
+
+    </div>
+
+
+    <div class="course">
+
+      <div class="course-icon">
+        📖
+      </div>
+
+      <h3>Nazra</h3>
+
+      <p>
+        Quran reading and fluency.
+      </p>
+
+      <span class="price">
+        $50
+      </span>
+
+    </div>
+
+
+    <div class="course">
+
+      <div class="course-icon">
+        ✨
+      </div>
+
+      <h3>Nazra</h3>
+
+      <p>
+        Additional Nazra course option.
+      </p>
+
+      <span class="price">
+        $80
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- TEACHERS -->
+
+<section id="teachers">
+
+  <h2>Our Teachers</h2>
+
+  <p class="subtitle">
+    Select a teacher to open the chat.
+  </p>
+
+
+  <div class="teachers">
+
+
+    <div class="teacher">
+
+      <h3>Zain Ilyas</h3>
+
+      <p>
+        Quran Teacher
+      </p>
+
+      <button onclick="openChat('Zain Ilyas')">
+        Open Chat
+      </button>
+
+    </div>
+
+
+    <div class="teacher">
+
+      <h3>Abdullah Shahzad</h3>
+
+      <p>
+        Chat Only
+      </p>
+
+      <button onclick="openChat('Abdullah Shahzad')">
+        Open Chat
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- CHAT -->
+
+<section id="chat">
+
+  <h2>Student Chat</h2>
+
+  <p class="subtitle">
+    Chat with the selected teacher.
+  </p>
+
+
+  <div class="chat">
+
+    <div class="chat-header">
+
+      <span id="chatTeacher">
+        Select Teacher
+      </span>
+
+    </div>
+
+
+    <div class="messages" id="messages">
+
+      <div class="message">
+        Assalam-o-Alaikum! Please select a teacher.
+      </div>
+
+    </div>
+
+
+    <form class="chat-form" onsubmit="sendMessage(event)">
+
+      <input
+        id="chatText"
+        placeholder="Write your message..."
+      >
+
+      <button type="submit">
+        Send
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+
+
+<!-- FEES -->
+
+<section id="fees">
+
+  <h2>Payment Methods</h2>
+
+  <p class="subtitle">
+    Select an approved payment method.
+  </p>
+
+
+  <div class="payments">
+
+
+    <div class="payment">
+
+      <h3>EasyPaisa</h3>
+
+      <p>
+        Pay your academy fee using EasyPaisa.
+      </p>
+
+      <br>
+
+      <button
+        class="button"
+        onclick="paymentMessage()"
+      >
+        Send Payment Reference
+      </button>
+
+    </div>
+
+
+    <div class="payment">
+
+      <h3>UBL</h3>
+
+      <p>
+        Pay your academy fee through UBL.
+      </p>
+
+      <br>
+
+      <button
+        class="button"
+        onclick="paymentMessage()"
+      >
+        Send Payment Reference
+      </button>
+
+    </div>
+
+
+    <div class="payment">
+
+      <h3>Bank Transfer</h3>
+
+      <p>
+        Bank transfer option for academy fees.
+      </p>
+
+      <br>
+
+      <button
+        class="button"
+        onclick="paymentMessage()"
+      >
+        Send Payment Reference
+      </button>
+
+    </div>
+
+
+  </div>
+
+
+  <div id="paymentNotice" class="notice">
+    Payment reference feature is ready for the future backend.
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  <h3>Iqra Quran Academy</h3>
+
+  <p>
+    Quran Learning • Hifz • Nazra • Online Classes
+  </p>
+
+  <br>
+
+  <small>
+    © 2026 Iqra Quran Academy
+  </small>
+
+</footer>
+
+
+
+<script>
+
+  let selectedTeacher = "";
+
+
+  document
+    .getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const name =
+        document.getElementById("studentName").value;
+
+      const course =
+        document.getElementById("course").value;
+
+      const teacher =
+        document.getElementById("teacher").value;
+
+
+      selectedTeacher = teacher;
+
+
+      document.getElementById("chatTeacher").innerText =
+        teacher;
+
+
+      const notice =
+        document.getElementById("registrationMessage");
+
+
+      notice.style.display = "block";
+
+
+      notice.innerText =
+        "Welcome " +
+        name +
+        "! Your profile has been created. Course: " +
+        course +
+        ". Teacher: " +
+        teacher +
+        ".";
+
+    });
+
+
+
+  function openChat(teacher) {
+
+    selectedTeacher = teacher;
+
+    document.getElementById("chatTeacher").innerText =
+      teacher;
+
+
+    document.getElementById("messages").innerHTML =
+      '<div class="message">' +
+      'Chat with ' +
+      teacher +
+      ' is ready.' +
+      '</div>';
+
+
+    document
+      .getElementById("chat")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+
+  function sendMessage(event) {
+
+    event.preventDefault();
+
+
+    if (!selectedTeacher) {
+
+      alert("Please select a teacher first.");
+
+      return;
+
+    }
+
+
+    const input =
+      document.getElementById("chatText");
+
+
+    const text =
+      input.value.trim();
+
+
+    if (!text) return;
+
+
+    const message =
+      document.createElement("div");
+
+
+    message.className =
+      "message my-message";
+
+
+    message.innerText =
+      text;
+
+
+    document
+      .getElementById("messages")
+      .appendChild(message);
+
+
+    input.value = "";
+
+  }
+
+
+
+  function paymentMessage() {
+
+    const notice =
+      document.getElementById("paymentNotice");
+
+
+    notice.style.display = "block";
+
+
+    notice.innerText =
+      "Payment reference section is ready. Real payment verification will be connected later.";
+
+  }
+
+</script>
+
+</body>
+</html>
